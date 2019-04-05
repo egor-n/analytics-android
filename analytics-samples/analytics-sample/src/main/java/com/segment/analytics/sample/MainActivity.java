@@ -79,7 +79,10 @@ public class MainActivity extends Activity {
 
   @OnClick(R.id.action_flush)
   void onFlushButtonClicked() {
-    Analytics.with(this).flush();
+    Analytics analytics = ((SampleApp) getApplicationContext()).analytics;
+    analytics.track("Button A Clicked");
+    analytics.flush();
+    analytics.shutdown();
   }
 
   @Override

@@ -32,6 +32,7 @@ public class SampleApp extends Application {
 
   // https://segment.com/segment-engineering/sources/android-test/settings/keys
   private static final String ANALYTICS_WRITE_KEY = "5m6gbdgho6";
+  Analytics analytics;
 
   @Override
   public void onCreate() {
@@ -51,10 +52,7 @@ public class SampleApp extends Application {
             .recordScreenViews();
 
     // Set the initialized instance as a globally accessible instance.
-    Analytics.setSingletonInstance(builder.build());
-
-    // Now anytime you call Analytics.with, the custom instance will be returned.
-    Analytics analytics = Analytics.with(this);
+    analytics = builder.build();
 
     // If you need to know when integrations have been initialized, use the onIntegrationReady
     // listener.
